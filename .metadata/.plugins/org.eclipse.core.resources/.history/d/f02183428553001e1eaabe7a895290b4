@@ -1,0 +1,30 @@
+package controller;
+
+import java.util.List;
+
+import dao.ReservaDao;
+import factory.ConnectionFactory;
+import modelo.Reserva;
+
+public class ReservaController {
+	
+	ReservaDao reservaDao;
+	
+	public ReservaController() {
+		this.reservaDao = new ReservaDao(new ConnectionFactory().recuperConexion());
+	}
+	
+	public int guardarReserva(Reserva reserva) {
+		return reservaDao.guardarReserva(reserva);
+	}
+	
+	public List<Reserva> listarReservas(){
+		return reservaDao.listarReservas();
+	}
+
+	public int eliminar(Integer id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+}

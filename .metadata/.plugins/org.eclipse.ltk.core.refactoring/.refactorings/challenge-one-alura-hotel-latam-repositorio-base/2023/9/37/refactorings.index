@@ -1,0 +1,5 @@
+1694751081385	Extract method 'cargarTablaHuespedes'
+1694751361967	Extract method 'cargarTablaReservas'
+1694751472243	Extract method 'filtradoTablas'
+1694905517499	Extract method 'guardandoReserva'
+1694914060241	Extract method 'guardandoHuesped'

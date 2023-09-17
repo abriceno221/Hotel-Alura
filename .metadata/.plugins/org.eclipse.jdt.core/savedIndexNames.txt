@@ -1,0 +1,11 @@
+INDEX VERSION 1.131+D:\LENOVO\Documents\Estudio\Programación\Progrmación (Oracle)\JAVA y SPRING BOOT\Challenge1\Hotel Alura\.metadata\.plugins\org.eclipse.jdt.core
+1772613828.index
+3321202997.index
+733097909.index
+1510625180.index
+324713304.index
+3700823351.index
+1865797976.index
+3297670628.index
+3698352875.index
+3641189161.index

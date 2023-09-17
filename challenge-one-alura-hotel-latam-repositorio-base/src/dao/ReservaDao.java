@@ -1,0 +1,114 @@
+package dao;
+
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import modelo.Huesped;
+import modelo.Reserva;
+
+public class ReservaDao {
+
+	final private Connection con;
+	
+	public ReservaDao(Connection con) {
+		this.con = con;
+	}
+	
+	public int guardarReserva(Reserva reserva) {
+		ResultSet resultSet;
+		try(con){
+			final PreparedStatement statement = con.prepareStatement("INSERT INTO RESERVAS (fechaEntrada, fechaSalida, "
+					+ "valor, formaDePago) VALUES(?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			
+				try(statement) {
+					statement.setDate(1, reserva.getFechaEntradaDate());
+					statement.setDate(2, reserva.getFechaSalida());		
+					statement.setBigDecimal(3, reserva.getValor());
+					statement.setString(4, reserva.getFormaDePago());
+					statement.execute();	
+					resultSet = statement.getGeneratedKeys();
+					try(resultSet){
+						if(resultSet.next()) {
+							reserva.setId(resultSet.getInt(1));
+							return resultSet.getInt(1);
+						}else {
+							return 0;
+						}
+					}
+				}
+				
+		}catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public List<Reserva> listarReservas(){
+		List<Reserva> reservas = new ArrayList<>();
+		
+		try(con){
+			final PreparedStatement statement = con.prepareStatement("SELECT id, fechaEntrada, fechaSalida, valor, "
+					+ "formaDePago FROM reservas");
+			try(statement){
+				statement.execute();
+				
+				final ResultSet resultSet = statement.getResultSet();
+				
+				try(resultSet){
+					while(resultSet.next()){
+						Reserva reserva= new Reserva(resultSet.getInt("id"),
+								resultSet.getDate("fechaEntrada"),
+								resultSet.getDate("fechaSalida"),
+								resultSet.getBigDecimal("valor"),
+								resultSet.getString("formaDePago"));
+						
+						
+						reservas.add(reserva);
+					}
+				}
+			}
+			return reservas;
+		}catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public int eliminarReserva(int id) {
+		try(con){
+				
+			final PreparedStatement statement = con.prepareStatement("DELETE FROM reservas WHERE id = ?");
+			try(statement){
+				statement.setInt(1, id);
+				statement.execute();
+				return statement.getUpdateCount();
+			}
+		}catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public int modificarReserva(Integer id, Date fechaEntrada, Date fechaSalida, BigDecimal valor, String formaDePago) {
+		try(con){
+			final PreparedStatement statement = con.prepareStatement("UPDATE reservas SET fechaEntrada = ?, "
+					+ "fechaSalida = ?, valor = ?, formaDePago = ? WHERE id=?");
+			try(statement){
+				statement.setDate(1, fechaEntrada);
+				statement.setDate(2, fechaSalida);
+				statement.setBigDecimal(3, valor);
+				statement.setString(4, formaDePago);
+				statement.setInt(5, id);
+				statement.execute();
+				
+				return statement.getUpdateCount();
+			}
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+}

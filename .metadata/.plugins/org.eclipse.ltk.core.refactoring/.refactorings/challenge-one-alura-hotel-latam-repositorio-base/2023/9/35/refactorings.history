@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;fechaSalda&apos; in &apos;modelo.Reserva&apos; to &apos;fechaSalida&apos;&#x0D;&#x0A;- Original project: &apos;challenge-one-alura-hotel-latam-repositorio-base&apos;&#x0D;&#x0A;- Original element: &apos;modelo.Reserva.fechaSalda&apos;&#x0D;&#x0A;- Renamed element: &apos;modelo.Reserva.fechaSalida&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;fechaSalda&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;modelo{Reserva.java[Reserva^fechaSalda" name="fechaSalida" references="true" setter="false" stamp="1693537880171" textual="false" version="1.0"/>
+</session>
