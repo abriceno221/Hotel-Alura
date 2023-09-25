@@ -80,7 +80,7 @@ una base de datos.
     </li> 
 </ul>
 
-<h2 id="tecnologias-utilizadas">🖥️Tecnologías Utilizadas</h2>
+<h2 id="tecnologias-utilizadas">🖥️Tecnologías utilizadas</h2>
 <ul>
     <li>Java 11</li>
     <li>MySQL</li>
