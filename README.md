@@ -7,7 +7,7 @@
 
 <div align = "center" id="insignias">
     <span style="display: inline-block;">
-        <img alt="Static Badge" src="https://img.shields.io/badge/relase%20date-september2023-green">
+        <img alt="Static Badge" src="https://img.shields.io/badge/release%20date-september2023-green">
         <img alt="Static Badge" src="https://img.shields.io/badge/JavaSE11-purple">
         <img alt="Static Badge" src="https://img.shields.io/badge/maven-v3.7.0-darkblue">
         <img alt="Static Badge" src="https://img.shields.io/badge/c3p0-v0.9.5.5-green">
